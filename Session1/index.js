@@ -5,6 +5,7 @@ const PORT = 8083;
 const server  = http.createServer((req, res) => {
 
     const url = req.url;
+    const method = req.method;
 
     if(url === "/") {
         // res.writeHead(200, { "content-type": "text/html" })
@@ -12,8 +13,13 @@ const server  = http.createServer((req, res) => {
         res.write("hello utkarsh");
         res.end();
     } else if (url === "/abouts") {
-        // res.write();
-        res.end("This website is created by utkarsh, 8837463389"); // VV important line 
+
+        if(method === "GET") {
+            res.end("This website is created by utkarsh, 8837463389"); // VV important line 
+        } else {
+            res.writeHead(404)
+            res.end("CANT POST HERE");
+        }
     } else if (url === "/fitness") {
         const fitnessObject = {
             diet: "2kg",
