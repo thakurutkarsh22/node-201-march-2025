@@ -53,8 +53,6 @@ server.get("/v1/activity/users", (req,res) => {
 })
 
 
-
-
 // gender search 
 server.get("/v1/activity/users/searchs", (req, res) => {
     console.log("request recieved")
