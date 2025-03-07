@@ -1,15 +1,16 @@
 const userData = require("../usersData");
 const { isActivityUserSchemaValid } = require("../Validator/ActivityUserValidation");
 
-const PASSWORD = "asdf1234"
+
 
 
 function getAllUsers(req,res) {
+    const envPassword = process.env.PASSWORD
 
     const headers = req.headers;
     const {authorization} = headers;
 
-    if(authorization === PASSWORD) {
+    if(authorization === envPassword) {
         res.writeHead(200, { "content-type": "application/json" })
         res.end(JSON.stringify(userData.data));
     } else {

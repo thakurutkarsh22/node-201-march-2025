@@ -3,7 +3,7 @@ const { getAllUsers, getUsersByGender, getUserByID } = require("../Controllers/U
 const router = express.Router();
 
 
-router.get("/", getAllUsers);
+// router.get("/", getAllUsers);
 router.get("/searchs", getUsersByGender);
 router.get("/:uuid", getUserByID);   
 
