@@ -40,6 +40,7 @@ const password = (String)(process.env.PASSWORD);
 server.use("/v1/activity/users" , ActivityUsersRoute)
 
 
+db.connect(url);
 
 
 

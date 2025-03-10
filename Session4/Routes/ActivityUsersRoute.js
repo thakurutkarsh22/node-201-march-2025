@@ -4,7 +4,7 @@ const VerifyAUthentication = require("../Middlewares/LoginMiddleware");
 const router = express.Router();
 
 
-router.get("/", VerifyAUthentication , getAllUsers);
+router.get("/", VerifyAUthentication, getAllUsers);
 router.get("/searchs", VerifyAUthentication, getUsersByGender);
 router.get("/:uuid", getUserByID);   
 
