@@ -7,7 +7,7 @@ async function createBLog (req, res) {
     const body = req.body;
     const title = body.title;
     const content = body.content;
-    const authors = body.author;
+    const authors = body.authors;
 
 
     try {
@@ -16,8 +16,6 @@ async function createBLog (req, res) {
     } catch (error) {
         res.status(400).json(error);
     }
-
-
 }
 
 async function getAllBlogs (req, res) {

@@ -17,6 +17,9 @@ server.use(express.json());
 
 
 server.use("/v1/blogs", BlogsRoute)
+server.get("/v1/intro", (req,res) => {
+  res.send("hello to project 6")
+})
 
 
 
