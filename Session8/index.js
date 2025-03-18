@@ -2,6 +2,7 @@ const express = require('express')
 const dotEnv = require("dotenv");
 const mongoose = require('mongoose');
 const BlogsRoute = require("./Routes/BlogsRoute");
+const AuthRoute = require("./Routes/AuthRoute");
 
 
 const server = express()
@@ -20,6 +21,9 @@ server.use("/v1/blogs", BlogsRoute)
 server.get("/v1/intro", (req,res) => {
   res.send("hello to project 8")
 })
+// route for login and signup
+server.use("/v1/auth", AuthRoute)
+
 
 
 const dbCOnnectionUrl = process.env.DB_CONNECTION + "";
