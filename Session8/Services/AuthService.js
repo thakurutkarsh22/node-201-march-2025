@@ -1,4 +1,5 @@
 const UserModel = require("../Database/Models/User.Model");
+const bcrypt = require("bcrypt");
 
 class AuthService {
 
@@ -17,6 +18,32 @@ class AuthService {
         } catch(error) {
             return error
         }
+    }
+
+
+    static async login(username, password) {
+        
+        const loginResponse = {
+            isLogged: false
+        }
+        const user = await AuthService.findUserByUsername(username);
+
+    
+        if(!user || !user.length) {
+            return loginResponse;
+        } else {
+            const res = await bcrypt.compare(password, user[0].password)
+            return {
+                isLogged: res
+            };
+        }
+
+
+    }
+
+    static async findUserByUsername(username) {
+        const user = await UserModel.find({username: username});
+        return user;
     }
 
 }
