@@ -3,7 +3,10 @@ const dotEnv = require("dotenv");
 const mongoose = require('mongoose');
 const BlogsRoute = require("./Routes/BlogsRoute");
 const AuthRoute = require("./Routes/AuthRoute");
+const cors = require("cors");
 
+// THIS WILL ALLOW ALL THE ORIGINS 
+app.use(cors())
 
 const server = express()
 const PORT = 8085;

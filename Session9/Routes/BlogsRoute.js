@@ -1,11 +1,12 @@
 const express = require("express");
 const { createBLog, getAllBlogs, findByID, deleteByID, editByID, blogsByUser, blogsByTitle, blogsByTitleOrUser } = require("../Controllers/BlogController");
+const VerifyAUthentication = require("../Middlewares/LoginMiddleware");
 const router = express.Router();
 
 
 
 
-router.post("/createnewblog", createBLog );
+router.post("/createnewblog", VerifyAUthentication, createBLog );
 router.get("/getAllBlogs", getAllBlogs );
 router.get("/getBLog/:id", findByID);
 router.delete("/delete/:id", deleteByID);
