@@ -37,7 +37,13 @@ async function login(req, res) {
                 ...loginResponse,
                 token: token
             }
-            res.status(200).json(response)
+            // We are giving choice to the client to save this token in local storage or do anything that it wants 
+            // res.status(200).json(response)
+            // a server can kinda force the Frontend to store this token in COokies 
+            res.cookie("token", token, {
+                httpOnly: true,
+                maxAge: 60*60*60*1000
+            })
         } else {
             res.status(403).json({message: "invalid credentials"})
         }
@@ -51,3 +57,11 @@ module.exports = {
     userSignup,
     login
 }
+
+
+
+
+//  authentication vs authorization ? 
+
+// ID CARD -> Lets me in building and work at my station - authentication
+// but I cant go to admin room, server room , CTO ->  authorization 
