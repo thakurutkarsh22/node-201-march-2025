@@ -5,8 +5,12 @@ const router = express.Router();
 
 
 
+const passport = require("passport");
+const authMiddleware = passport.authenticate("jwt", { failureRedirect: '/login', session: false })
 
-router.post("/createnewblog", VerifyAUthentication, createBLog );
+
+
+router.post("/createnewblog", authMiddleware , createBLog );
 router.get("/getAllBlogs", getAllBlogs );
 router.get("/getBLog/:id", findByID);
 router.delete("/delete/:id", deleteByID);

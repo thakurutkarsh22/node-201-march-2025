@@ -41,8 +41,6 @@ class AuthService {
                 username: user[0].username,
             };
         }
-
-
     }
 
     static async findUserByUsername(username) {

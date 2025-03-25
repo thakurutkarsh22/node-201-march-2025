@@ -3,6 +3,8 @@ const dotEnv = require("dotenv");
 const mongoose = require('mongoose');
 const BlogsRoute = require("./Routes/BlogsRoute");
 const AuthRoute = require("./Routes/AuthRoute");
+const configurationPassport = require("./Config/passport");
+const passport = require("passport");
 const cors = require("cors");
 
 // THIS WILL ALLOW ALL THE ORIGINS 
@@ -10,6 +12,8 @@ const cors = require("cors");
 const server = express()
 const PORT = 8085;
 
+
+configurationPassport(passport);
 
 // loads environment variables from a .env file into process.env
 dotEnv.config();
